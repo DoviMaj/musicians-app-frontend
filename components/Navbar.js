@@ -1,15 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import styles from "../styles/Navbar.module.scss";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarText,
+} from "reactstrap";
 
-const Navbar = () => {
+const Nav_bar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
   return (
-    <nav>
-      <Link href="/">Home</Link>
-      <Link href="/musician-form">Musician Form</Link>
-      <Link href="/band-form">Band Form</Link>
-      <Link href="/musicians">Musicians</Link>
-    </nav>
+    <Navbar
+      style={{ backgroundColor: "#eee8e8 !important" }}
+      className={styles.navbar}
+      color="light"
+      light
+      expand="md"
+    >
+      <Link href="/" passHref>
+        <NavbarBrand>Home</NavbarBrand>
+      </Link>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="mr-auto" navbar>
+          <NavItem></NavItem>
+          <NavItem>
+            <Link href="/musician-form" passHref>
+              <NavLink>Register Musician</NavLink>
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link href="/band-form" passHref>
+              <NavLink>Register Band</NavLink>
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link href="/musicians" passHref>
+              <NavLink>Musicians</NavLink>
+            </Link>
+          </NavItem>
+        </Nav>
+        <NavbarText>Musicians App</NavbarText>
+      </Collapse>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default Nav_bar;
