@@ -19,9 +19,8 @@ const musician_form = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data.image);
+    console.log(data);
   };
-
   return (
     <Container>
       <Form className={styles.form}>
@@ -69,14 +68,19 @@ const musician_form = () => {
         </FormGroup>
 
         <FormGroup>
-          <Label htmlFor="image">Profile Image:</Label>
+          <Label htmlFor="image_url">Profile Image Url:</Label>
           <Input
-            {...register("image", {
-              required: "Required",
+            required
+            {...register("image_url", {
+              required: true,
+              pattern: {
+                value: /\.(jpeg|jpg|gif|png)$/,
+                message: "invalid image, must end with jpeg, jpg, gif or png",
+              },
             })}
-            type="file"
+            type="text"
           ></Input>{" "}
-          {errors.image && <FormText>Image is required</FormText>}
+          {errors.image_url && <FormText>{errors.image_url.message}</FormText>}
         </FormGroup>
 
         <Button
