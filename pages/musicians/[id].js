@@ -45,7 +45,13 @@ const musician = ({ musicianInstance, bands, allMusicianBands }) => {
         <h2>Bands:</h2>
         {allMusicianBands &&
           allMusicianBands.map((band) => {
-            return <div key={band.band_id}>{band.name}</div>;
+            return (
+              <div key={band.band_id}>
+                <img width="100" height="100" src={band.image_url}></img>
+                <h4>{band.name}</h4>
+                <p>{band.description}</p>
+              </div>
+            );
           })}
       </div>
       <Form.Group>
@@ -57,16 +63,21 @@ const musician = ({ musicianInstance, bands, allMusicianBands }) => {
           defaultValue="Select a band"
           custom
         >
-          <option value="Select a band" disabled="disabled" selected="selected">
+          <option value="Select a band" disabled="disabled">
             Select a band
           </option>
           {bands &&
-            bands.map((band) => (
-              <option value={band.band_id} key={band.band_id}>
-                {band.name}
-                {band.band_id}
-              </option>
-            ))}
+            bands.map((band) => {
+              const ids = allMusicianBands.map((mb) => mb.band_id);
+              if (!ids.includes(band.band_id)) {
+                return (
+                  <option value={band.band_id} key={band.band_id}>
+                    {band.name}
+                    {band.band_id}
+                  </option>
+                );
+              }
+            })}
         </Form.Control>
       </Form.Group>
       <Button onClick={handleSubmit} type="submit">
