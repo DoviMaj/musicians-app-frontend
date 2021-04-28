@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Container,
   Button,
@@ -18,13 +18,31 @@ const musician_form = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    try {
+      const req = await fetch(
+        `http://${process.env.NEXT_PUBLIC_BACKEND}/api/musician`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(req);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   return (
     <Container>
       <Form className={styles.form}>
         <h1>Musician Registration</h1>
+
         <FormGroup>
           <Label htmlFor="name">Name:</Label>
           <Input
@@ -70,7 +88,6 @@ const musician_form = () => {
         <FormGroup>
           <Label htmlFor="image_url">Profile Image Url:</Label>
           <Input
-            required
             {...register("image_url", {
               required: true,
               pattern: {
