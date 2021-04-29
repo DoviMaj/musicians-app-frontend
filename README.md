@@ -1,12 +1,12 @@
 # Musicians App - frontend
 
 ## Tech used:
-* react
-* sass
-* bootstrap 
-* nextjs 
-* cssmodules 
-* react-form-hook
+* React
+* Sass
+* Bootstrap 
+* Next.js 
+* css-modules 
+* React Form Hook
 
 ## Desktop demo
 ![demo](demo.gif)
