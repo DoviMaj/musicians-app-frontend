@@ -1,12 +1,6 @@
 .Home {
-  position: relative;
-
-  // background: url('https://online.berklee.edu/takenote/wp-content/uploads/2019/08/john-hult-xxgkYSD-ekE-unsplash.jpg') no-repeat center center fixed;
-  // -webkit-background-size: cover;
-  // -moz-background-size: cover;
-  // -o-background-size: cover;
-  // background-size: cover;
   img {
+    filter: grayscale(100%);
     z-index: -100;
     /* Set rules to fill background */
     min-height: 100%;
@@ -21,41 +15,45 @@
     top: 0;
     left: 0;
   }
-}
-
-.title {
-  color: whitesmoke;
-  margin: 20px;
-  text-align: center;
-}
-
-.links {
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: auto;
-}
-
-.card {
-  color: black;
-  background: #eee8e8;
-  margin: 20px;
-  min-height: 180px;
-  padding: 30px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-
-  h1 {
+  .title {
+    font-size: 4em;
+    color: whitesmoke;
+    margin: 20px;
     text-align: center;
+
+    @media (max-width: 400px) {
+      font-size: 3em;
+    }
   }
 
-  @media (max-width: 930px) {
-    width: 70%;
+  .links {
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
   }
-  button {
-    width: 100%;
+
+  .card {
+    color: black;
+    background: #eee8e8;
+    margin: 20px;
+    min-height: 180px;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    h1 {
+      text-align: center;
+    }
+
+    @media (max-width: 930px) {
+      width: 70%;
+    }
+    button {
+      width: 100%;
+    }
   }
 }
