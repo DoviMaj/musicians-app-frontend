@@ -1,17 +1,15 @@
 import React from "react";
+import BandCard from "../../components/BandCard";
+import styles from "../../styles/ListPage.module.scss";
 
 const bands = ({ theBands }) => {
   return (
-    <div>
+    <div className={styles.page}>
       <h1>Bands:</h1>
-      {theBands &&
-        theBands.map((band) => (
-          <div key={band.band_id}>
-            <img width="200" height="200" src={band.image_url}></img>
-            <p>Band name: {band.name}</p>
-            <p>Description: {band.description}</p>
-          </div>
-        ))}
+      <div className={styles.list}>
+        {theBands &&
+          theBands.map((band) => <BandCard key={band.band_id} band={band} />)}
+      </div>
     </div>
   );
 };
