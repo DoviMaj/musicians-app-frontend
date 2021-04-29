@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "../styles/Navbar.module.scss";
 import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  NavbarText,
 } from "reactstrap";
 
 const Nav_bar = () => {
@@ -24,20 +23,24 @@ const Nav_bar = () => {
       light
       expand="md"
     >
-      <Link href="/" passHref>
-        <NavbarBrand>Home</NavbarBrand>
-      </Link>
+      <Nav navbar>
+        <NavItem>
+          <Link href="/" passHref>
+            <NavLink>Home</NavLink>
+          </Link>
+        </NavItem>
+      </Nav>
+
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
-          <NavItem></NavItem>
           <NavItem>
-            <Link href="/musician-form" passHref>
+            <Link href="/musician_form" passHref>
               <NavLink>Register Musician</NavLink>
             </Link>
           </NavItem>
           <NavItem>
-            <Link href="/band-form" passHref>
+            <Link href="/band_form" passHref>
               <NavLink>Register Band</NavLink>
             </Link>
           </NavItem>
@@ -46,8 +49,14 @@ const Nav_bar = () => {
               <NavLink>Musicians</NavLink>
             </Link>
           </NavItem>
+          <NavItem>
+            <Link href="/bands" passHref>
+              <NavLink>Bands</NavLink>
+            </Link>
+          </NavItem>
         </Nav>
-        <NavbarText>Musicians App</NavbarText>
+
+        <Image src="/band.svg" width="50" height="50" />
       </Collapse>
     </Navbar>
   );
