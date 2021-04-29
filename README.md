@@ -1,8 +1,16 @@
+## Desktop demo
+![demo](demo.gif)
+
+## Mobile demo
+![mobiledemo](mobiledemo.gif)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+1. Clone and run the backend server instructions [here](https://github.com/DoviMaj/musicians-app-backend/blob/master/README.md):
+
+2. Clone and run this repository. For the development server:
 
 ```bash
 npm run dev
