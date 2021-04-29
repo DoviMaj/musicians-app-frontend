@@ -9,12 +9,14 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Musicians/Bands</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="Description" content="Musicians/Bands"></meta>
+        <meta name="Description" content="Musicians App"></meta>
         <link rel="preconnect" href="https://fonts.gstatic.com"></link>
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700;900&display=swap"
           rel="stylesheet"
         ></link>
+        <link rel="shortcut icon" href="/band.svg" />
+        <title>Musicians App</title>
       </Head>
       <Component {...pageProps} />
     </Layout>
