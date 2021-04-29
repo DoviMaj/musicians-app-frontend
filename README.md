@@ -1,4 +1,4 @@
-# Musicians App - front-end
+# Musicians App - frontend
 
 ## Tech used:
 * react
