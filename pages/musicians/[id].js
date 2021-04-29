@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import styles from "../../styles/MusiciansPage.module.scss";
+import BandCard from "../../components/BandCard";
 
 const musician = ({ musicianInstance, bands, allMusicianBands }) => {
   const [selected, setSelected] = useState();
@@ -26,6 +28,8 @@ const musician = ({ musicianInstance, bands, allMusicianBands }) => {
           },
         }
       );
+      if (!req) return;
+      window.location.reload();
       console.log(req);
     } catch (err) {
       console.log(err);
@@ -33,29 +37,31 @@ const musician = ({ musicianInstance, bands, allMusicianBands }) => {
   };
 
   return (
-    <div>
-      <h1>{art.name}</h1>
-      <p>Age: {art.age}</p>
-      <p>
-        Date of birth:
-        {new Date(`${art.date_of_birth}`).toISOString().split("T")[0]}
-      </p>
-      <img width="300" height="300" src={art.image_url}></img>
-      <div>
+    <div className={styles.page}>
+      <div className={styles.profile}>
+        {" "}
+        <img width="300" height="300" src={art.image_url}></img>
+        <div>
+          <h1>Name: {art.name}</h1>
+          <p>Age: {art.age}</p>
+          <p>
+            Date of birth:{" "}
+            {new Date(`${art.date_of_birth}`).toISOString().split("T")[0]}
+          </p>
+          <p>Instrument: {art.instrument}</p>
+        </div>
+      </div>
+
+      <div className={styles.bands_section}>
         <h2>Bands:</h2>
-        {allMusicianBands &&
-          allMusicianBands.map((band) => {
-            return (
-              <div key={band.band_id}>
-                <img width="100" height="100" src={band.image_url}></img>
-                <h4>{band.name}</h4>
-                <p>{band.description}</p>
-              </div>
-            );
-          })}
+        <div className={styles.list}>
+          {allMusicianBands &&
+            allMusicianBands.map((band) => {
+              return <BandCard band={band} />;
+            })}
+        </div>
       </div>
       <Form.Group>
-        <Form.Label htmlFor="band">Add your band</Form.Label>
         <Form.Control
           id="band"
           as="select"
