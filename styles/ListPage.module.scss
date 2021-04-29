@@ -1,0 +1,13 @@
+.page {
+  h1 {
+    text-align: center;
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 90%;
+  margin: auto;
+}
