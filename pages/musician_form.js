@@ -9,14 +9,18 @@ import {
   FormText,
 } from "reactstrap";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import styles from "../styles/Form.module.scss";
 
 const musician_form = () => {
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const router = useRouter();
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -32,6 +36,14 @@ const musician_form = () => {
           },
         }
       );
+      const res = await req.json();
+      reset({
+        name: "",
+        instrument: "",
+        image_url: "",
+        date_of_birth: "",
+      });
+      router.push(`/musicians/${res.musician_id}`);
       console.log(req);
     } catch (err) {
       console.log(err);
