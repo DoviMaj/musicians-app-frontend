@@ -24,16 +24,13 @@ const musician_form = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    const formData = new FormData();
-    for (const name in data) {
-      formData.append(name, data[name]);
-    }
+    if (!data) return;
     try {
       const req = await fetch(
         `http://${process.env.NEXT_PUBLIC_BACKEND}/api/bands`,
         {
           method: "POST",
-          body: formData,
+          body: JSON.stringify(data),
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -41,14 +38,14 @@ const musician_form = () => {
         }
       );
       const res = await req.json();
-      console.log(res);
+
       reset({
         name: "",
         description: "",
         image: "",
       });
+
       router.push(`/bands/${res.band_id}`);
-      console.log(req);
     } catch (err) {
       console.log(err);
     }
@@ -90,12 +87,12 @@ const musician_form = () => {
           <Input
             {...register("image_url", {
               required: true,
-              // pattern: {
-              //   value: /\.(jpeg|jpg|gif|png)$/,
-              //   message: "invalid image, must end with jpeg, jpg, gif or png",
-              // },
+              pattern: {
+                value: /\.(jpeg|jpg|gif|png)$/,
+                message: "invalid image, must end with jpeg, jpg, gif or png",
+              },
             })}
-            type="file"
+            type="text"
           ></Input>{" "}
           {errors.image_url && <FormText>{errors.image_url.message}</FormText>}
         </FormGroup>
