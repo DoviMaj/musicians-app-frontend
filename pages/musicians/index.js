@@ -1,20 +1,17 @@
 import React from "react";
-import Link from "next/link";
+import MusicianCard from "../../components/MusicianCard";
+import styles from "../../styles/ListPage.module.scss";
 
 const musicians = ({ artists }) => {
   return (
-    <div>
+    <div className={styles.page}>
       <h1>Musicians:</h1>
-      {artists &&
-        artists.map((art) => (
-          <Link href={`/musicians/${art.musician_id}`} key={art.musician_id}>
-            <div>
-              <img width="150" height="150" src={art.image_url}></img>
-              <p>Name: {art.name}</p>
-              <p>Instrument: {art.instrument}</p>
-            </div>
-          </Link>
-        ))}
+      <div className={styles.list}>
+        {artists &&
+          artists.map((art) => (
+            <MusicianCard key={art.musician_id} art={art} />
+          ))}
+      </div>
     </div>
   );
 };
