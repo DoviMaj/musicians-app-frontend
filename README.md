@@ -9,10 +9,10 @@
 * React Form Hook
 
 ## Desktop demo
-![demo](demo.gif)
+![demo](https://github.com/DoviMaj/musicians-app-frontend/demos/demo.gif)
 
 ## Mobile demo
-![mobiledemo](mobiledemo.gif)
+![mobiledemo](https://github.com/DoviMaj/musicians-app-frontend/demos/mobiledemo.gif)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
