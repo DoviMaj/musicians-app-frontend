@@ -1,5 +1,7 @@
 # Musicians App - frontend
 
+### Back-end [here](https://github.com/DoviMaj/musicians-app-backend/)
+
 ## Tech used:
 * React
 * Sass
